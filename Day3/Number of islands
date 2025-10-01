@@ -1,3 +1,4 @@
+package 
 class Solution {
     public int numIslands(char[][] grid) {
         int c=0;
