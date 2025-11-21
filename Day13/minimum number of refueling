@@ -1,0 +1,31 @@
+
+class Solution {
+    public int minRefuelStops(int target, int startFuel, int[][] stations) {
+        int maxr=startFuel;
+        int c=0;
+        int i=0;
+        int n=stations.length;
+        List<Integer> fuels=new ArrayList<>();
+
+        while(maxr<target){
+            while(i<n && stations[i][0]<=maxr) {
+                fuels.add(stations[i][1]);
+                i++;
+            }
+            if(fuels.isEmpty())
+                return -1;
+            int maxFuel=-1;
+            int idx=-1;
+            for(int j=0;j<fuels.size();j++){
+                if(fuels.get(j)>maxFuel) {
+                    maxFuel=fuels.get(j);
+                    idx=j;
+                }
+            }
+            fuels.remove(idx);
+            maxr+=maxFuel;
+            c++;
+        }
+        return c;
+    }
+}
